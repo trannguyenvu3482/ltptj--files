@@ -52,28 +52,28 @@ public class AppUtil {
 		});
 	}
 
-	public static <T> Map<String, Object> getArtistsProperties(T t) {
-		// TypeAdapter
-		TypeAdapter<LocalDate> adapter = new TypeAdapter<LocalDate>() {
+	// public static <T> Map<String, Object> getArtistsProperties(T t) {
+	// 	// TypeAdapter
+	// 	TypeAdapter<LocalDate> adapter = new TypeAdapter<LocalDate>() {
 
-			@Override
-			public void write(JsonWriter out, LocalDate value) throws IOException {
-				out.value(formatDate(value));
-			}
+	// 		@Override
+	// 		public void write(JsonWriter out, LocalDate value) throws IOException {
+	// 			out.value(formatDate(value));
+	// 		}
 
-			@Override
-			public LocalDate read(JsonReader in) throws IOException {
-				return parseDate(in.nextString());
-			}
+	// 		@Override
+	// 		public LocalDate read(JsonReader in) throws IOException {
+	// 			return parseDate(in.nextString());
+	// 		}
 
-		};
+	// 	};
 
-		Gson gson = new GsonBuilder().registerTypeAdapter(LocalDate.class, adapter).create();
+	// 	Gson gson = new GsonBuilder().registerTypeAdapter(LocalDate.class, adapter).create();
 
-		String json = gson.toJson(t);
-		return gson.fromJson(json, new TypeToken<Map<String, Object>>() {
-		});
-	}
+	// 	String json = gson.toJson(t);
+	// 	return gson.fromJson(json, new TypeToken<Map<String, Object>>() {
+	// 	});
+	// }
 
 	public static String formatDate(LocalDate date) {
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -85,30 +85,30 @@ public class AppUtil {
 		return LocalDate.parse(date, formatter);
 	}
 
-	public static Artist nodeToArtist(Node node) {
-		Map<String, Object> properties = node.asMap();
+	// public static Artist nodeToArtist(Node node) {
+	// 	Map<String, Object> properties = node.asMap();
 
-		TypeAdapter<LocalDate> adapter = new TypeAdapter<LocalDate>() {
+	// 	TypeAdapter<LocalDate> adapter = new TypeAdapter<LocalDate>() {
 
-			@Override
-			public void write(JsonWriter out, LocalDate value) throws IOException {
-				out.value(formatDate(value));
+	// 		@Override
+	// 		public void write(JsonWriter out, LocalDate value) throws IOException {
+	// 			out.value(formatDate(value));
 
-			}
+	// 		}
 
-			@Override
-			public LocalDate read(JsonReader in) throws IOException {
-				return parseDate(in.nextString());
-			}
+	// 		@Override
+	// 		public LocalDate read(JsonReader in) throws IOException {
+	// 			return parseDate(in.nextString());
+	// 		}
 
-		};
+	// 	};
 
-		Gson gson = new GsonBuilder().registerTypeAdapter(LocalDate.class, adapter).create();
+	// 	Gson gson = new GsonBuilder().registerTypeAdapter(LocalDate.class, adapter).create();
 
-		String json = gson.toJson(properties);
-		System.out.println(json);
-		return gson.fromJson(json, Artist.class);
-	}
+	// 	String json = gson.toJson(properties);
+	// 	System.out.println(json);
+	// 	return gson.fromJson(json, Artist.class);
+	// }
 
 //	public static Customer nodeToCustomer(Node node) {
 //		Map<String, Object> properties = node.asMap();
